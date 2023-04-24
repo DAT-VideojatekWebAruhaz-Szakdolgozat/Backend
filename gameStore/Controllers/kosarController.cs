@@ -57,6 +57,23 @@ namespace gameStore.Controllers
             }
         }
 
+        [HttpGet]
+
+        public IActionResult KosarFid()
+        {
+            using (var context = new jatekshopContext())
+            {
+                try
+                {
+                    return Ok(context.Kosars.ToList());
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.Message);
+                }
+            }
+        }
+
 
         [HttpPost]
         public IActionResult jatekPostkosarelott(Osszesjatek jatek)
@@ -117,7 +134,7 @@ namespace gameStore.Controllers
              }*/
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
 
         public IActionResult kosarTorles(int id)
         {

@@ -30,6 +30,24 @@ namespace gameStore.Controllers
             }
         }
 
+        [HttpGet]
+
+        public IActionResult OsszesFelhasznalo()
+        {
+            List<Felhasznalok> list = new List<Felhasznalok>();
+            using (var context = new jatekshopContext())
+            {
+                try
+                {
+                    return StatusCode(200, context.Felhasznaloks.ToList());
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.Message);
+                }
+            }
+        }
+
         /*
         [HttpGet("{id}")]
 
